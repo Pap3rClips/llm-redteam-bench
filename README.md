@@ -83,7 +83,6 @@ Le simulateur intégré est un « pire cas » qui obéit à tout : il mesure ce 
 - [ ] Étendre le catalogue (variantes multilingues, injections à plusieurs tours)
 - [ ] Rapport HTML avec le détail des échanges attaque par attaque
 - [ ] Mesure comparée de plusieurs modèles (part des attaques refusées par le modèle seul)
-- [ ] Brancher les applications cibles [llm-privacy-gateway](https://github.com/Pap3rClips/llm-privacy-gateway) et [wazuh-llm-triage](https://github.com/Pap3rClips/wazuh-llm-triage) comme cibles réelles
 
 ## Licence
 
