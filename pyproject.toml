@@ -1,0 +1,22 @@
+[project]
+name = "llm-redteam-bench"
+version = "0.1.0"
+description = "Banc de red teaming pour applications LLM, classé selon l'OWASP Top 10 LLM 2025"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S", "BLE"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+"redteam/llm.py" = ["S105"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]
+filterwarnings = ["ignore::DeprecationWarning"]

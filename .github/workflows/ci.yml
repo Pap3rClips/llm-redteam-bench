@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-dev.txt
+      - name: Lint
+        run: ruff check redteam targets tests
+      - name: Tests
+        run: pytest
+      - name: Analyse statique de sécurité (Bandit)
+        run: bandit -r redteam targets
+      - name: Vulnérabilités des dépendances (pip-audit)
+        run: pip-audit -r requirements.txt
+      - name: Non-régression du durcissement (le profil durci résiste)
+        run: PYTHONPATH=. python -m redteam --profile hardened --fail-over 0.0
