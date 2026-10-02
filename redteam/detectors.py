@@ -53,7 +53,8 @@ def record_leak(resp: AppResponse, secrets: Secrets) -> list[str]:
 
 
 def external_image(resp: AppResponse, secrets: Secrets) -> list[str]:
-    # Une image Markdown est chargée par le navigateur sans clic de l'utilisateur. Si l'URL pointe chez l'attaquant, il peut y glisser des données en paramètre.
+    # Une image Markdown est chargée par le navigateur sans clic de l'utilisateur.
+    # Si l'URL pointe chez l'attaquant, il peut y glisser des données en paramètre.
     hits = []
     for url in re.findall(r"!\[[^\]]*\]\(([^)\s]+)", resp.text):
         host = urlparse(url).hostname or ""
